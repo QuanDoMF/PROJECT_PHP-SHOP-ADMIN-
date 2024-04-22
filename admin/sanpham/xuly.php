@@ -25,6 +25,7 @@ include_once('../../model/database.php');
 								$rs_ctsp=mysqli_query($conn, $sql_ctsp);
 						 	}
 						}$dem=1;
+						
 						$sql_addanhsp="INSERT INTO `anhsp`(`MaSP`) VALUES ('$so') ";
 						mysqli_query($conn,$sql_addanhsp);
 						foreach($_FILES['anhsp']['name'] as $key=>$value) {

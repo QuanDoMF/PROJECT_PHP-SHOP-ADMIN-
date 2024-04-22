@@ -272,8 +272,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var variationQuantity = parseInt(document.querySelector('.quantity-info').innerText) || 1;
 
     quantityLeftMinusBtn.addEventListener('click', function() {
-        updateQuantity(-1);
+        updateQuantity(parseInt(-1));
     });
+
+    quantityRightPlusBtn.addEventListener('click', function() {
+        updateQuantity(parseInt(1));
+    })
 
     soluongInput.addEventListener('input', function() {
         validateQuantity();
@@ -281,10 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateQuantity(change) {
         var currentValue = parseInt(soluongInput.value) || 1;
-        var newValue = currentValue + change;
-
         soluongInput.value = Math.min(Math.max(newValue, 1), variationQuantity);
-
         validateQuantity();
     }
 
@@ -306,7 +307,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var selectedSize = this.value;
             var quantityInfo = document.querySelector('.quantity-info[data-size="' +
                 selectedSize + '"]');
-
             if (quantityInfo) {
                 quantityInfoLabel.innerText = 'Size: ' + selectedSize +
                     ', Số lượng: ' + quantityInfo.innerText;

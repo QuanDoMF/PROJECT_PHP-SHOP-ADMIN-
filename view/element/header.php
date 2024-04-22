@@ -64,10 +64,8 @@
                         <div class="col-sm-5 col-md-5">
                             <form action="index.php?view=products-search" class="search-wrap" method="POST">
                                 <div class="form-group">
-                                    <input type="search" class="form-control search" name="tukhoa"
-                                        placeholder=" Tìm kiếm">
-                                    <button class="btn btn-primary submit-search text-center" name="timkiem"
-                                        type="submit"><i class="fas fa-magnifying-glass"></i></button>
+                                    <input type="search" class="form-control search" name="tukhoa" placeholder=" Tìm kiếm">
+                                    <button class="btn btn-primary submit-search text-center" name="timkiem" type="submit"><i class="fas fa-magnifying-glass"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -83,21 +81,28 @@
                                     <a href="#">Danh Mục</a>
                                     <ul class="dropdown">
                                         <?php
-                                $category = categorys();
-                                while ($row = (mysqli_fetch_array($category))) {
-                                    echo '<li><a href="?view=products-category&id=' . $row['MaNCC'] . '">' . $row['TenNCC'] . '</a></li>';
-                                }
-                                ?>
+                                        $category = categorys();
+                                        while ($row = (mysqli_fetch_array($category))) {
+                                            echo '<li><a href="?view=products-category&id=' . $row['MaNCC'] . '">' . $row['TenNCC'] . '</a></li>';
+                                        }
+                                        ?>
                                     </ul>
                                 </li>
                                 <li><a href="?view=products">Sản Phẩm</a></li>
                                 <li><a href="?view=about">Về Chúng Tôi</a></li>
                                 <li><a href="?view=contact">Liên Hệ</a></li>
                                 <?php
+                                $unique_items = array();
                                 $dem = 0;
                                 if (isset($_SESSION['cart_product'])) {
                                     foreach ($_SESSION['cart_product'] as $item_cart) {
-                                        $dem = $dem + $item_cart['SoLuong'];
+                                        // Tạo một chuỗi đại diện cho cặp id-size
+                                        $key = $item_cart['MaSP'] . '-' . $item_cart['Size'];
+                                        // Nếu cặp id-size chưa tồn tại trong mảng tạm, tăng biến đếm và thêm cặp id-size vào mảng tạm
+                                        if (!in_array($key, $unique_items)) {
+                                            $dem++;
+                                            $unique_items[] = $key;
+                                        }
                                     }
                                 }
                                 ?>
@@ -106,12 +111,12 @@
                                     <a href="?view=cart">
                                         <i class="fas fa-basket-shopping"></i> Giỏ Hàng
                                         <?php
-                                    if ($dem > 0) {
-                                        echo '<b style="color: red;">[' . $dem . ']</b>';
-                                    } else {
-                                        echo '[' . $dem . ']';
-                                    }
-                                    ?>
+                                        if ($dem > 0) {
+                                            echo '<b style="color: red;">[' . $dem . ']</b>';
+                                        } else {
+                                            echo '[' . $dem . ']';
+                                        }
+                                        ?>
                                     </a>
                                 </li>
                             </ul>
