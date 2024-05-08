@@ -145,7 +145,7 @@ if (isset($_POST['order'])) {
     </head>
     <body>
     <p>Kính gửi ' . $kh['TenKH'] . ',</p>
-    <p>Cảm ơn bạn đã đặt hàng tại Lac Lac Shoes. Dưới đây là chi tiết đơn hàng của bạn:</p>
+    <p>Cảm ơn bạn đã đặt hàng tại Nhóm 11 Shoes. Dưới đây là chi tiết đơn hàng của bạn:</p>
     <table>
     <tr>
     <th>Sản phẩm</th>
@@ -169,13 +169,14 @@ if (isset($_POST['order'])) {
         $mail->isSMTP();                                            // sử dụng SMTP
         $mail->Host       = 'smtp.gmail.com';                       // SMTP server
         $mail->SMTPAuth   = true;                                   // bật chế độ xác thực SMTP
-        $mail->Username   = 'laclacshoes@gmail.com';        // tài khoản đăng nhập SMTP
-        $mail->Password   = 'vuhycycmugcawimu';                         // mật khẩu đăng nhập SMTP
+        $mail->Username   = 'dotrungquan24@gmail.com';        // tài khoản đăng nhập SMTP
+        // pass: ywyeishuwxztekdg
+        $mail->Password   = 'ywyeishuwxztekdg';                         // mật khẩu đăng nhập SMTP
         $mail->SMTPSecure = 'tls';                                  // giao thức bảo mật TLS
         $mail->Port       = 587;
-        $mail->setFrom('laclacshoes@gmail.com', 'Lac Lac Shoes');          // địa chỉ email và tên người gửi
+        $mail->setFrom('dotrungquan24@gmail.com', 'Nhom 11 Shoes');          // địa chỉ email và tên người gửi
         $mail->addAddress($kh['Email'], $kh['TenKH']); // địa chỉ email và tên người nhận
-        $mail->Subject = ' Lac Lac Shoes - DON HANG CUA BAN';                               // tiêu đề email
+        $mail->Subject = ' Nhom 11 Shoes - XIN THONG BAO DON HANG CUA BAN!';                               // tiêu đề email
         $mail->Body    = $message;
         $mail->isHTML(true);                            // định dạng email dưới dạng HTML
         // $mail->addAttachment('path/to/file.pdf');       // đính kèm tập tin PDF

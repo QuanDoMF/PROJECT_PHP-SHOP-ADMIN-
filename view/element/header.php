@@ -57,7 +57,7 @@
                         <div class="col-sm-7 col-md-4">
                             <div id="colorlib-logo">
                                 <a href="?view">
-                                    <img class="logo-header" src="webroot/image/logo/LAC LAC shoes store2.png" alt="">
+                                    <img class="logo-header" src="webroot/image/logo/logo_brand.png" alt="">
                                 </a>
                             </div>
                         </div>
